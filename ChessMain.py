@@ -2,7 +2,7 @@
 This is the main driver file. It is responsible for handling user input and displaying the current GameState
 """
 import pygame as p
-from Chess import ChessEngine, ChessAI as ai
+from Chess import ChessEngine, ChessAI as Ai
 
 
 WIDTH = HEIGHT = 512
@@ -54,7 +54,7 @@ def main():
     # White
     player_two = False
     # Black
-    # True if white is human, false if AI
+    # True if white is human, false if Ai
 
     while running:
         human_turn = (gs.white_to_move and player_one) or (not gs.white_to_move and player_two)
@@ -107,11 +107,11 @@ def main():
                     gs.white_to_move = True
                     game_over = False
 
-            # ai Move maker
+            # Ai Move maker
             if not game_over and not human_turn:
-                ai_move = ai.min_max(gs, gs.get_valid_moves())
+                ai_move = Ai.min_max(gs, gs.get_valid_moves())
                 if ai_move is None:
-                    ai_move = ai.find_random_move(valid_moves)
+                    ai_move = Ai.find_random_move(valid_moves)
                 gs.make_move(ai_move)
                 move_made = True
 
